@@ -1,8 +1,13 @@
 // import logoImg from './assets/logo-esports.svg';
+// import { GameController } from 'phosphor-react';
 import * as Dialog from '@radix-ui/react-dialog';
 import { useEffect, useState } from 'react';
+
 import { CreateAdBanner } from './components/CreateAdBanner';
+import { Form } from './components/Form/Form';
+
 import { GameBanner } from './components/GameBanner';
+
 import './styles/main.css';
 
 interface Game {
@@ -55,8 +60,7 @@ function App() {
             <Dialog.Title className='text-3xl font-black'>
               Publique um anúncio
             </Dialog.Title>
-            <Dialog.Content>
-            </Dialog.Content>
+            <Form />
           </Dialog.Content>
         </Dialog.Portal>
       </Dialog.Root>
