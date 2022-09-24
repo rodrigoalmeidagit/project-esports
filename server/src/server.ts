@@ -1,31 +1,17 @@
 import {PrismaClient} from '@prisma/client';
 import cors from 'cors';
 import express from 'express';
+
 import {convertHoursStringToMinutes} from './utils/convert-hours-string-to-minutes';
 import {convertMinutesToHourString} from './utils/convert-minutes-to-hour-string';
 
 const app = express();
-app.use(express.json());
-app.use(cors());
-
 const prisma = new PrismaClient({
   log: ['query'],
 });
 
-// HTTP METHODS - API RESTFUL //
-// GET - LEITURA/BUSCAR ALGO
-// POST - CRIANDO NOVO
-// PUT - EDITAR A MAIORIA DOS DADOS
-// PATCH - EDITAR DADO ESPECÍFICO
-// DELETE - DELETAR ENTIDADE
-
-// HTTP CODES //
-// 200, 300, 400, 500
-
-// PARAMETERS TYPES (PERSISTIR ESTADO ATUAL DA PÁGINA - FILTRO, ORDENAÇÃO, ETC)
-// QUERY PARAMS(NOMEADOS): exp: localhost:3333/ads?page=2&source=title
-// ROUTE PARAMS(NÃO NOMEADOS): exp: localhost:3333/ads/como-criar-um-game
-// BODY PARAMS(VARIAS INFOS NA REQUISIÇÃO): exp: formulário
+app.use(express.json());
+app.use(cors());
 
 app.get('/games', async (request, response) => {
   const games = await prisma.game.findMany({
@@ -112,3 +98,18 @@ app.post('/games/:id/ads', async (request, response) => {
 });
 
 app.listen(3333);
+
+// HTTP METHODS - API RESTFUL //
+// GET - LEITURA/BUSCAR ALGO
+// POST - CRIANDO NOVO
+// PUT - EDITAR A MAIORIA DOS DADOS
+// PATCH - EDITAR DADO ESPECÍFICO
+// DELETE - DELETAR ENTIDADE
+
+// HTTP CODES //
+// 200, 300, 400, 500
+
+// PARAMETERS TYPES (PERSISTIR ESTADO ATUAL DA PÁGINA - FILTRO, ORDENAÇÃO, ETC)
+// QUERY PARAMS(NOMEADOS): exp: localhost:3333/ads?page=2&source=title
+// ROUTE PARAMS(NÃO NOMEADOS): exp: localhost:3333/ads/como-criar-um-game
+// BODY PARAMS(VARIAS INFOS NA REQUISIÇÃO): exp: formulário
