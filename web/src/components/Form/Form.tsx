@@ -1,5 +1,6 @@
-import { DialogClose } from "@radix-ui/react-dialog";
-import { GameController } from "phosphor-react";
+import * as Checkbox from '@radix-ui/react-checkbox';
+import * as Dialog from "@radix-ui/react-dialog";
+import { Check, GameController } from "phosphor-react";
 import { Input } from "./Input";
 
 export function Form() {
@@ -89,18 +90,22 @@ export function Form() {
         </div>
       </div>
 
-      <div className="mt-2 flex gap-2 text-sm">
-        <Input type="checkbox" />
+      <div className="mt-2 flex items-center gap-2 text-sm">
+        <Checkbox.Root className='w-6 h-6 p-1 rounded bg-zinc-900'>
+          <Checkbox.Indicator>
+            <Check className='w-4 h-4 text-emerald-400' />
+          </Checkbox.Indicator>
+        </Checkbox.Root>
         Costumo me conectar ao chat de voz
       </div>
 
       <footer className="mt-4 flex justify-end gap-4">
-        <DialogClose
+        <Dialog.Close
           type="button"
           className="bg-zinc-500 px-5 h-12 rounded-md font-semibold hover:bg-zinc-600"
         >
           Cancelar
-        </DialogClose>
+        </Dialog.Close>
         <button
           type='submit'
           className="bg-violet-500 px-5 h-12 rounded-md font-semibold flex items-center gap-3 hover:bg-violet-600"
