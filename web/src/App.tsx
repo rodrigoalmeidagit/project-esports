@@ -1,4 +1,5 @@
 import * as Dialog from '@radix-ui/react-dialog';
+import axios from 'axios';
 import { useEffect, useState } from 'react';
 
 import { CreateAdBanner } from './components/CreateAdBanner';
@@ -17,13 +18,12 @@ interface Game {
 }
 
 export default function App() {
+  const url = 'http://localhost:3333/games'
   const [games, setGames] = useState<Game[]>([])
 
   useEffect(() => {
-    const url = 'http://localhost:3333/games'
-    fetch(url)
-      .then(response => response.json())
-      .then(data => { setGames(data) })
+    axios(url)
+      .then(response => setGames(response.data))
   }, [])
 
   return (
