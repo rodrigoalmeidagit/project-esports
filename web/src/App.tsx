@@ -18,11 +18,10 @@ interface Game {
 }
 
 export default function App() {
-  const url = 'http://localhost:3333/games'
   const [games, setGames] = useState<Game[]>([])
 
   useEffect(() => {
-    axios(url)
+    axios('http://localhost:3333/games')
       .then(response => setGames(response.data))
   }, [])
 
