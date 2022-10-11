@@ -13,6 +13,8 @@ const prisma = new PrismaClient({
 app.use(express.json());
 app.use(cors());
 
+
+// TODO: Verificar erro ads.
 app.get('/games', async (request, response) => {
   const games = await prisma.game.findMany({
     include: {
